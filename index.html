@@ -21,7 +21,11 @@
         <div class="logo-container">
             <img src="/Resources/logo.png"/>
         </div>
+        <div class="hamburger-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
         <div class="menu-container">
+            <i class="fa-solid fa-xmark"></i>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -287,6 +291,7 @@
     
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 <script>
     
@@ -306,9 +311,20 @@
         // maxDistance: 10.00,
         // spacing: 20.00
      });
-});
 
-const swiper = new Swiper('.swiper', {
+  // Initially hide the menu container
+
+  // Open the menu (You can trigger this in another way, like a hamburger button)
+  $('.hamburger-menu i').click(function() {
+    $('.menu-container').fadeIn(); // Show the menu
+  });
+
+  // Close the menu when the close icon is clicked
+  $('.menu-container i').click(function() {
+    $('.menu-container').fadeOut(); // Hide the menu
+  });
+
+  const swiper = new Swiper('.swiper', {
   loop: true,
   slidesPerView: 5,
   slidesPerGroup: 1,
@@ -317,8 +333,29 @@ const swiper = new Swiper('.swiper', {
     delay: 1000,
     disableOnInteraction: false,
   },
+  breakpoints: {
+    // When window width is <= 768px
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 15,
+    },
+    // When window width is <= 480px
+    992: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    700: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    
+    1: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+   
+  },
 });
-
 // Pause on hover
 const swiperEl = document.querySelector('.swiper');
 
@@ -329,4 +366,10 @@ swiperEl.addEventListener('mouseenter', () => {
 swiperEl.addEventListener('mouseleave', () => {
   swiper.autoplay.start();
 });
+
+
+});
+
+
+
 </script>
