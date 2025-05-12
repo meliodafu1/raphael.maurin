@@ -75,7 +75,7 @@ p,li{
     display:flex;
     align-items: center;
     padding:var(--row-padding);
-    height:90vh;
+    min-height:90vh;
     background:var(--primary-color);
    
 }
@@ -545,6 +545,7 @@ p,li{
 body,
 html {
     overflow-x :hidden;
+    height: 100%;
 }
 
 
@@ -659,6 +660,7 @@ html {
        }
     .swiper {
         top:0;
+        position: relative;
         width:100%;
     }
        
