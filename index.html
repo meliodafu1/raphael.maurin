@@ -27,15 +27,15 @@
         <div class="menu-container">
             <i class="fa-solid fa-xmark"></i>
             <ul>
-                <li><a href="#hero-sect">Home</a></li>
-                <li><a href="#about-sect">About</a></li>
-                <li><a href="#project-sect">Projects</a></li>
-                <li><a href="#experience-sect">Experience</a></li>
-                <li><a href="#contact-sect">Contact</a></li>
+                <li><a href="#hero-sect" class="scroll-link active-class">Home</a></li>
+                <li><a href="#about-sect" class="scroll-link">About</a></li>
+                <li><a href="#project-sect" class="scroll-link">Projects</a></li>
+                <li><a href="#experience-sect" class="scroll-link">Experience</a></li>
+                <li><a href="#contact-sect" class="scroll-link">Contact</a></li>
             </ul>
         </div>
     </div>
-    <div class="hero-section" id="hero-sect">
+    <div class="hero-section section " id="hero-sect">
         <div class="hero-two-col">
             <div class="left-col">
                 <h3>Hi there,</h3>
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="about-us-row" id="about-sect">   
+    <div class="about-us-row section" id="about-sect">   
         <div class="two-col-section">
             <div class="left-col-section">
                 <div class="img-container-first-section">
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <div class="projects-row" id="project-sect">
+    <div class="projects-row section" id="project-sect">
         <h2>What I've Built</h2>
         <div class="projects-container">
             <div class="projects-card">
@@ -179,7 +179,7 @@
             </div>
         </div>
     </div>
-    <div class="experience-row" id="experience-sect">
+    <div class="experience-row section" id="experience-sect">
         <h2 class="heading-title">EXPERIENCE</h2>
         <div class="two-col-section">
             <div class="left-col-section">
@@ -223,7 +223,7 @@
             </div>
         </div>
     </div>
-    <div class="contact-row" id="contact-sect">
+    <div class="contact-row section" id="contact-sect">
         <div class="form-container">
             <div class="left-col-container">
                 <div class="contact-left-content">
@@ -370,6 +370,43 @@ swiperEl.addEventListener('mouseleave', () => {
 
 });
 
+ // Smooth scroll on click
+ document.querySelectorAll('.scroll-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
 
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll spy using Intersection Observer
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.scroll-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+
+        // Remove active from all
+        navLinks.forEach(link => link.classList.remove('active-class'));
+
+        // Add active to current section's link
+        const activeLink = document.querySelector(`.scroll-link[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active-class');
+        }
+      }
+    });
+  }, {
+    threshold: 0.5 // Adjusts how early the section activates
+  });
+
+  // Observe each section
+  sections.forEach(section => observer.observe(section));
 
 </script>
