@@ -238,21 +238,21 @@
                         <div class="input-two-col">
                             <div class="input-field">
                                 <label for="firstname">FIRST NAME</label><br>
-                                <input type="text" name="firstname" />
+                                <input type="text" name="firstname" required />
                             </div>
                             <div class="input-field">
                                 <label for="lastname">LAST NAME</label><br>
-                                <input type="text" name="lastname" />
+                                <input type="text" name="lastname" required />
                             </div>
                         </div>
                         <div class="input-two-col">
                             <div class="input-field">
                                 <label for="email">EMAIL</label><br>
-                                <input type="text" name="email" />
+                                <input type="text" name="email" required />
                             </div>
                             <div class="input-field">
                                 <label for="phone">PHONE</label><br>
-                                <input type="text" name="phone" />
+                                <input type="text" name="phone" required  />
                             </div>
                         </div>
                         <div class="input-one-col input-field">
@@ -403,7 +403,7 @@ swiperEl.addEventListener('mouseleave', () => {
       }
     });
   }, {
-    threshold: 0.5 // Adjusts how early the section activates
+    threshold: 0.25 // Adjusts how early the section activates
   });
 
   // Observe each section
